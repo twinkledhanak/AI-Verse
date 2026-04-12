@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Verse Lab — multi-model compare</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  
+  <body>
+    <main class="page">
+      <header class="header">
+        <h1>AI-Verse Lab</h1>
+        <p class="lede">
+          Multi-model comparison of responses from different AI models
+        </p>
+      </header>
+
+      
+      <section class="panel">
+        <!-- Taking input from user-->
+        <label for="prompt">Enter your prompt</label>
+        <textarea id="prompt" rows="5"
+          placeholder="e.g. Explain what an API is in two sentences."></textarea>
+
+        <!-- All actions for given prompt-->    
+        <div class="actions">
+          <button type="button" id="send" class="btn primary">Send to all models</button>
+          <span id="status" class="status" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section class="results" id="results" aria-label="Model responses"></section>
+    </main>
+
+    
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
