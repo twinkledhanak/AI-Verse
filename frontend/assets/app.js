@@ -38,6 +38,7 @@ async function sendPromptToAIModels() {
   resultsEl.innerHTML = "";
 
   try {
+    // Sending prompt from UI to backend directly.
     const res = await fetch(BACKEND_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
