@@ -15,6 +15,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from app_constants import APP_PROMPT_MAX_CHARS
 from llm_providers import call_anthropic, call_openai_chat
 
 ## App Constants
@@ -39,7 +40,7 @@ app.add_middleware(
 ## Max Length of 32000 characters can handle ~8000 token at the application level
 ## Contributes in governing the context window size of the input
 class RequestHandler(BaseModel):
-    prompt: str = Field(..., min_length=1, max_length=32000)
+    prompt: str = Field(..., min_length=1, max_length=APP_PROMPT_MAX_CHARS)
 
 ## Handle Response format from Models 
 class ResponseHandler(BaseModel):
