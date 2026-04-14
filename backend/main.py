@@ -37,6 +37,7 @@ app.add_middleware(
 ########################################################
 ## Handle Request format from UI to Backend
 ## Max Length of 32000 characters can handle ~8000 token at the application level
+## Contributes in governing the context window size of the input
 class RequestHandler(BaseModel):
     prompt: str = Field(..., min_length=1, max_length=32000)
 
@@ -53,6 +54,8 @@ async def compare_models(body: RequestHandler):
 
     # Run all providers in parallel — same user message, independent API calls.
     results = await asyncio.gather(
+        ## We are passing the single prompt to both models
+        ## Currently this code does not provide history of user prommpt and model responses
         call_openai_chat(p),
         call_anthropic(p),
     )
